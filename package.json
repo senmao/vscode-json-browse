@@ -1,0 +1,75 @@
+{
+  "name": "jsonbrowse",
+  "displayName": "JsonBrowse",
+  "icon": "images/icon.png",
+  "description": "Read JSON and JSONL with escaped \\n in strings displayed as real line breaks, plus colors, nesting, and automatic wrapping.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "jsonlViewer.openViewer",
+        "title": "Open in JsonBrowse",
+        "icon": "$(preview)",
+        "enablement": "resourceExtname =~ /\\.jsonl?$/i && activeCustomEditorId != jsonlViewer.viewer"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "command": "jsonlViewer.openViewer",
+          "when": "resourceExtname =~ /\\.jsonl?$/i && activeCustomEditorId != jsonlViewer.viewer",
+          "group": "navigation@1"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "jsonlViewer.openViewer",
+          "when": "resourceExtname =~ /\\.jsonl?$/i && activeCustomEditorId != jsonlViewer.viewer"
+        }
+      ]
+    },
+    "customEditors": [
+      {
+        "viewType": "jsonlViewer.viewer",
+        "displayName": "JsonBrowse",
+        "selector": [
+          {
+            "filenamePattern": "*.json"
+          },
+          {
+            "filenamePattern": "*.jsonl"
+          }
+        ],
+        "priority": "option"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "test": "npm run compile && node --test test/*.test.cjs",
+    "vscode:prepublish": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/vscode": "1.85.0",
+    "typescript": "~5.7.3"
+  },
+  "publisher": "scao",
+  "license": "MIT",
+  "keywords": [
+    "json",
+    "jsonl",
+    "viewer",
+    "pretty-print",
+    "multiline",
+    "newline",
+    "escaped-newlines"
+  ]
+}
