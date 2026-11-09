@@ -62,6 +62,14 @@
     "typescript": "~5.7.3"
   },
   "publisher": "scao",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/senmao/vscode-json-browse.git"
+  },
+  "homepage": "https://github.com/senmao/vscode-json-browse#readme",
+  "bugs": {
+    "url": "https://github.com/senmao/vscode-json-browse/issues"
+  },
   "license": "MIT",
   "keywords": [
     "json",
